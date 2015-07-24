@@ -1,15 +1,27 @@
 var SampleForm = function(){
-	this.textbox = $('input[name="fullname"]');
-	this.email = $('input[name="email"]');
-	this.gender = $('input[name="gender"]');
+	this.Hobbies = {
+		'Skiing' : 'ski',
+		'Running' : 'run',
+		'Eating' : 'eat',
+		'Sleeping' : 'sleep',
+		'Reading' : 'read',
+		'Coding' : 'code'
+	}
+	
+	this.HeardAbout = {
+		'Press' : 'press',
+		'Internet' : 'net',
+		'Word of mouth' : 'mouth',
+		'Other' : 'other'
+	}
 };
 
 SampleForm.prototype.setFullname = function(name){
-	this.textbox.val(name);
+	$('input[name="fullname"]').val(name);
 };
 
 SampleForm.prototype.setEmail = function(email){
-	this.email.val(email);
+	$('input[name="email"]').val(email);
 };
 
 SampleForm.prototype.setGender = function(gender){
@@ -19,7 +31,19 @@ SampleForm.prototype.setGender = function(gender){
 SampleForm.prototype.setHobbies = function(){
 	for(var i=0;i<arguments.length;i++)
 	{
-		$('input[type="checkbox"][value="'+arguments[i]+'"]').click();
+		$('input[type="checkbox"][value="'+this.Hobbies[arguments[i]]+'"]').click();
 	}
+};
+
+SampleForm.prototype.setHeard = function(heard){
+	$('#heard').val(this.HeardAbout[heard]);
+};
+
+SampleForm.prototype.setMessage = function(message){
+	$('#message').val(message);
+};
+
+SampleForm.prototype.clickValidate = function(){
+	$('span[class="btn btn-default"]').click();
 };
 
